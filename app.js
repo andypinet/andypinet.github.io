@@ -11,6 +11,8 @@ Vue.component("andy-qiuqiudajiale", {
     `
 });
 
+Vue.use(VueMarkdown);
+
 var app = new Vue({
   el: '#app',
   template: '#apptemplate',
