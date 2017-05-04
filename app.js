@@ -13,6 +13,24 @@ Vue.component("andy-qiuqiudajiale", {
 
 Vue.use(VueMarkdown);
 
+window.globalEle = {};
+window.globalEle.link = {};
+
+var loadCSS = function(url, callback){
+    var link = document.createElement('link');
+        link.type = 'text/css';
+        link.rel = 'stylesheet';
+        link.href = url;
+
+    document.getElementsByTagName('head')[0].appendChild(link);
+
+    var img = document.createElement('img');
+        img.onerror = function(){
+            if(callback) callback(link);
+        }
+        img.src = url;
+}
+
 var app = new Vue({
   el: '#app',
   template: '#apptemplate',
@@ -25,6 +43,9 @@ var app = new Vue({
   },
     mounted: function() {
         var self = this;
+loadCSS("http://139.196.32.227:8080/test.css", function(link) {
+    console.dir(link);
+});        
         setInterval(function () {
             self.global.now = new Date().toLocaleTimeString();
         }, 1000);
