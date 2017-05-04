@@ -14,13 +14,14 @@
 <body>
     <template id="apptemplate">
         <main>
-            <vue-markdown>The time of **NOW** is :</vue-markdown>            
+            <vue-markdown>The time of **NOW** is :</vue-markdown>
+            <vue-markdown :source="global.now"></vue-markdown>            
             <andy-qiuqiudajiale></andy-qiuqiudajiale>            
         </main>
     </template>        
     <div id="app">              
     </div>     
-    <script src="https://139.196.32.227:8080/vue-markdown.js"></script>
+    <script src="./vue-markdown.js"></script>
     <script src="./app.js"></script>
 </body>
 </html>

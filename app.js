@@ -16,8 +16,18 @@ Vue.use(VueMarkdown);
 var app = new Vue({
   el: '#app',
   template: '#apptemplate',
-  data: {
-    message: 'Hello Vue!'
-  }
+  data: function () {
+      return {
+          global: {
+              now: new Date().toLocaleTimeString()
+          }
+      }
+  },
+    mounted: function() {
+        var self = this;
+        setInterval(function () {
+            self.global.now = new Date().toLocaleTimeString();
+        }, 1000);
+    }  
 })
 
