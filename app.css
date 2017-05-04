@@ -1,0 +1,27 @@
+.andy-qiuqiudajiale {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.andy-qiuqiudajiale img {
+    width: 45%;
+    max-width: 240px;
+}
+
+@media screen and (min-width: 481px) {
+    .andy-qiuqiudajiale img:nth-child(2) {
+        margin-left: 30px;
+    }    
+}
+
+
+main {
+    width: 1020px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 480px) {
+    main {
+        width: 100%;
+    }
+}
