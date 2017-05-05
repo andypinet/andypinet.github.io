@@ -22,12 +22,16 @@
     </div>     
     <canvas id="glcanvas" width="0" height="0"></canvas>      
     <script src="https://cdn.bootcss.com/es6-promise/4.1.0/es6-promise.min.js"></script>    
-    <script src="https://cdn.bootcss.com/ClientJS/0.1.11/client.min.js"></script>     
-    <script src="./app.js?v=2017050501"></script>
+    <script src="https://cdn.bootcss.com/ClientJS/0.1.11/client.min.js"></script>         
+    <script src="./app.js?v=2017050502"></script>
     <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js');
+        if (window.location.protocol.indexOf("https") > -1 && 'serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js');
         }
+
+        window.anu.loadScript(window.location.origin + "/components.js").then(function () {
+            createApp();
+        })
     </script>
 </body>
 </html>
