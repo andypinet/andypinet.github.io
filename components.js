@@ -126,6 +126,7 @@ Vue.component("andy-testyourgpu", {
         ret.result = "";
         ret.disabled = false;
         // ret.cansee = customElements && typeof customElements.define == "function";
+        ret.cansee = true;
         ret.result = parseFloat(window.client.getBrowserVersion());
         if (window.client.isChrome() && parseFloat(window.client.getBrowserVersion()) > 52) {
             ret.cansee = true;
