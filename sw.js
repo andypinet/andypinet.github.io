@@ -49,6 +49,7 @@ self.addEventListener('activate', event => {
 // from the network before returning it to the page.
 self.addEventListener('fetch', event => {
   // Skip cross-origin requests, like those for Google Analytics.
+  console.log(event.request.url);
   if (event.request.url.indexOf("cdn.bootcss.com") > -1) {
     event.respondWith(
       caches.match(event.request).then(cachedResponse => {
