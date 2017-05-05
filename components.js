@@ -113,10 +113,10 @@ Vue.component("andy-yourdeviceinfo", {
 
 Vue.component("andy-testyourgpu", {
     template: `
-        <div class="andy-testyourgpu" >   
-            <div ref="result" v-html="result"></div>             
+        <div class="andy-testyourgpu" >            
             <div v-if="cansee">
                 <h3>测试gpu</h3> 
+                <div ref="result" v-html="result"></div>                    
                 <button :disabled="disabled" @click="start">start</button>            
             </div>
         </div>     
@@ -130,7 +130,6 @@ Vue.component("andy-testyourgpu", {
         } catch (error) {        
             ret.cansee = false;            
         }
-        ret.result = parseFloat(window.client.getBrowserVersion());
         if (window.client.isChrome() && parseFloat(window.client.getBrowserVersion()) > 52) {
             ret.cansee = true;
         }
@@ -138,9 +137,9 @@ Vue.component("andy-testyourgpu", {
     },
     mounted: function () {
         var self = this;
-        // window.anu.loadScript("./gpu.js").then(function () {
-        //    self.onReady();
-        // })
+        window.anu.loadScript("./gpu.js").then(function () {
+           self.onReady();
+        })
     },
     methods: {
         onReady: function () {
