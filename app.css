@@ -30,7 +30,7 @@
 
 @media screen and (max-width: 480px) {
     .andy-qiuqiudajiale .layout {
-        justify-content: space-between;
+        justify-content: space-around;
     }
 }
 
