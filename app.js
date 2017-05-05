@@ -48,7 +48,7 @@ window.anu.createApp = function () {
         data: function () {
             window.client = new ClientJS();       
             if (window.client.isMobile()) {
-            loadScript("./vconsole.min.js");
+            window.anu.loadScript("./vconsole.min.js");
             }
             return {
                 global: {
