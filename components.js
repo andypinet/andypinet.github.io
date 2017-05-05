@@ -124,7 +124,7 @@ Vue.component("andy-testyourgpu", {
     data: function () {    
         var ret = {};
         ret.result = "";
-        ret.disabled = false;
+        ret.disabled = true;
         try {
             ret.cansee = customElements && typeof customElements.define == "function";
         } catch (error) {        
@@ -138,7 +138,8 @@ Vue.component("andy-testyourgpu", {
     mounted: function () {
         var self = this;
         window.anu.loadScript("./gpu.js").then(function () {
-           self.onReady();
+            ret.disabled  = false;
+            self.onReady();
         })
     },
     methods: {
