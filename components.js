@@ -222,7 +222,7 @@ Vue.component("andy-testyourgpu", {
 
                     self.result = `
                         <p>CPU: ${stats.cpu.mean.toFixed(3)} s \xb1 ${stats.cpu.rme.toFixed(1)} %</p>
-                        <p>GPU: ${stats.gpu.mean.toFixed(3)}s \xb1' ${stats.gpu.rme.toFixed(1)} % faster</p>
+                        <p>GPU: ${stats.gpu.mean.toFixed(3)}s \xb1 ${stats.gpu.rme.toFixed(1)} % faster</p>
                     `;
                 });
 
