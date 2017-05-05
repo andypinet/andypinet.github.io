@@ -41,7 +41,7 @@ window.anu.loadScript = function(url) {
     })
 }
 
-window.createApp = function () {
+window.anu.createApp = function () {
     var app = new Vue({
         el: '#app',
         template: '#apptemplate',
