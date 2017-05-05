@@ -126,6 +126,11 @@ Vue.component("andy-testyourgpu", {
         ret.result = "";
         ret.disabled = false;
         // ret.cansee = customElements && typeof customElements.define == "function";
+        try {
+            ret.cansee = customElements && typeof customElements.define == "function";
+        } catch (error) {
+            alert("error");
+        }
         ret.cansee = true;
         ret.result = parseFloat(window.client.getBrowserVersion());
         if (window.client.isChrome() && parseFloat(window.client.getBrowserVersion()) > 52) {
