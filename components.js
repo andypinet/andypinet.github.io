@@ -231,7 +231,7 @@ Vue.component("andy-testyourgpu", {
 
                 suite.on('error', function(event) {
                     console.log("There was an error running on the GPU.");
-                    self.result = `There was an error running on the GPU.`;
+                    self.result = `<p>There was an error running on the GPU.</p>`;
                     self.disabled = false;
                 });
 
@@ -244,7 +244,7 @@ Vue.component("andy-testyourgpu", {
         },
         start: function () {
             var self = this;
-            self.result = `Start GPU.`;
+            self.result = `<p>Start GPU.</p>`;
             self.disabled = true;
             window.demoMult();            
         }
