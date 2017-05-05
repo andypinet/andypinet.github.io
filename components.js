@@ -99,13 +99,13 @@ Vue.component("andy-yourdeviceinfo", {
                  value: getUnmaskedInfo(gl).renderer
              }                                                                                     
         ];
-        findIP(function (newIps) {
-            ret.items.push({
-                key: "IP",
-                value: newIps
-            });
-            console.log('got ip: ', newIps);            
-        });
+        // findIP(function (newIps) {
+        //     ret.items.push({
+        //         key: "IP",
+        //         value: newIps
+        //     });
+        //     console.log('got ip: ', newIps);            
+        // });
         return ret;
     }
 });
