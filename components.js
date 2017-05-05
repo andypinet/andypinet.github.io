@@ -113,10 +113,12 @@ Vue.component("andy-yourdeviceinfo", {
 
 Vue.component("andy-testyourgpu", {
     template: `
-    <div ref="result" v-html="result"></div>    
-        <div class="andy-testyourgpu" v-if="cansee">   
-            <h3>测试gpu</h3>     
-            <button :disabled="disabled" @click="start">start</button>
+        <div class="andy-testyourgpu" >   
+            <div ref="result" v-html="result"></div>             
+            <div v-if="cansee">
+                <h3>测试gpu</h3> 
+                <button :disabled="disabled" @click="start">start</button>            
+            </div>
         </div>     
     `,
     data: function () {    
