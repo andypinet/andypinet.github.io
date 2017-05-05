@@ -115,11 +115,13 @@ Vue.component("andy-yourdeviceinfo", {
 Vue.component("andy-testyourgpu", {
     template: `
         <div class="andy-testyourgpu">   
-        测试gpu     
+        <h3>测试gpu</h3>
+        <div ref="result" v-html="result"></div>     
         </div>     
     `,
     data: function () {    
         var ret = {};
+        ret.result = "sds";
         return ret;
     },
     mounted: function () {
@@ -130,6 +132,7 @@ Vue.component("andy-testyourgpu", {
     },
     methods: {
         onReady: function () {
+            var self = this;
             if (window.performance) {
                 var gpu = new GPU();
 
@@ -208,25 +211,23 @@ Vue.component("andy-testyourgpu", {
                     
                     stats.gpu = this.filter(function(benchmark) {
                         return benchmark.name == 'mat_mult_gpu';
-                    }).map('stats')[0];
-                    
-                    console.dir(stats);
+                    }).map('stats')[0];                    
                     
                     var faster = '';
                     if (stats.cpu.mean > stats.gpu.mean) {
                         var times = stats.cpu.mean / stats.gpu.mean;
                         faster = ' <em>(' + times.toFixed(2) + ' times faster!)</em>';
                     }
-                    // var html = '';
-                    // html += '<p>CPU: ' + stats.cpu.mean.toFixed(3) +'s \xb1' + stats.cpu.rme.toFixed(1) + '%</p>'
-                    // html += '<p>GPU: ' + stats.gpu.mean.toFixed(3) + 's \xb1' + stats.gpu.rme.toFixed(1) + '%' + faster + '</p>';
-                    // html += '<small><em>Benchmarks provided by <a href="https://github.com/bestiejs/benchmark.js">benchmark.js</a></em></small>';
-                    // $('.demo-mult').removeClass('text-center');
-                    // $('.demo-mult').html(html);
+
+                    self.result = `
+                        <p>CPU: ${stats.cpu.mean.toFixed(3)} s \xb1 ${stats.cpu.rme.toFixed(1)} %</p>
+                        <p>GPU: ${stats.gpu.mean.toFixed(3)}s \xb1' ${stats.gpu.rme.toFixed(1)} % faster</p>
+                    `;
                 });
 
                 suite.on('error', function(event) {
                     console.log("There was an error running on the GPU.");
+                    self.result = `There was an error running on the GPU.`;
                 });
 
                 function demoMult() {
