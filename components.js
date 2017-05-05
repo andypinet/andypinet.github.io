@@ -114,15 +114,17 @@ Vue.component("andy-yourdeviceinfo", {
 
 Vue.component("andy-testyourgpu", {
     template: `
-        <div class="andy-testyourgpu">   
-        <h3>测试gpu</h3>
-        <div ref="result" v-html="result"></div>     
-        <button @click="start">start</button>
+        <div class="andy-testyourgpu" v-if="cansee">   
+            <h3>测试gpu</h3>
+            <div ref="result" v-html="result"></div>     
+            <button :disabled="disabled" @click="start">start</button>
         </div>     
     `,
     data: function () {    
         var ret = {};
         ret.result = "";
+        ret.disabled = false;
+        ret.cansee = customElements && typeof customElements.define == "function";
         return ret;
     },
     mounted: function () {
@@ -220,6 +222,7 @@ Vue.component("andy-testyourgpu", {
                         faster = ' <em>(' + times.toFixed(2) + ' times faster!)</em>';
                     }
 
+                    self.disabled = false;
                     self.result = `
                         <p>CPU: ${stats.cpu.mean.toFixed(3)} s \xb1 ${stats.cpu.rme.toFixed(1)} %</p>
                         <p>GPU: ${stats.gpu.mean.toFixed(3)}s \xb1 ${stats.gpu.rme.toFixed(1)} % faster</p>
@@ -229,6 +232,7 @@ Vue.component("andy-testyourgpu", {
                 suite.on('error', function(event) {
                     console.log("There was an error running on the GPU.");
                     self.result = `There was an error running on the GPU.`;
+                    self.disabled = false;
                 });
 
                 function demoMult() {
@@ -241,6 +245,7 @@ Vue.component("andy-testyourgpu", {
         start: function () {
             var self = this;
             self.result = `Start GPU.`;
+            self.disabled = true;
             window.demoMult();            
         }
     }
