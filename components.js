@@ -138,7 +138,7 @@ Vue.component("andy-testyourgpu", {
     mounted: function () {
         var self = this;
         window.anu.loadScript("./gpu.js").then(function () {
-            ret.disabled  = false;
+            self.disabled  = false;
             self.onReady();
         })
     },
