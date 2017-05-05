@@ -105,8 +105,7 @@ Vue.component("andy-yourdeviceinfo", {
             ret.items.push({
                 key: "IP",
                 value: newIps
-            });
-            console.log('got ip: ', newIps);            
+            });          
         });
         return ret;
     }
@@ -125,6 +124,9 @@ Vue.component("andy-testyourgpu", {
         ret.result = "";
         ret.disabled = false;
         ret.cansee = customElements && typeof customElements.define == "function";
+        if (window.client.isChrome() && parseFloat(window.client.getBrowserVersion()) > 52) {
+            ret.cansee = true;
+        }
         return ret;
     },
     mounted: function () {
