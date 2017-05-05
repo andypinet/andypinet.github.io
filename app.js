@@ -48,7 +48,7 @@ window.anu.createApp = function () {
         data: function () {
             window.client = new ClientJS();       
             if (window.client.isMobile()) {
-            window.anu.loadScript("./vconsole.min.js");
+                window.anu.loadScript("./vconsole.min.js");
             }
             return {
                 global: {
@@ -58,9 +58,6 @@ window.anu.createApp = function () {
         },
         mounted: function() {
             var self = this;       
-            setInterval(function () {
-                self.global.now = new Date().toLocaleTimeString();
-            }, 1000);
         }  
     })   
 }

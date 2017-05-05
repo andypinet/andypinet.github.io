@@ -117,11 +117,12 @@ Vue.component("andy-testyourgpu", {
         <div class="andy-testyourgpu">   
         <h3>测试gpu</h3>
         <div ref="result" v-html="result"></div>     
+        <button @click="start">start</button>
         </div>     
     `,
     data: function () {    
         var ret = {};
-        ret.result = "sds";
+        ret.result = "";
         return ret;
     },
     mounted: function () {
@@ -234,8 +235,13 @@ Vue.component("andy-testyourgpu", {
                     suite.run({ 'async': true });
                 }
 
-                demoMult();
+                window.demoMult = demoMult;
             }          
+        },
+        start: function () {
+            var self = this;
+            self.result = `Start GPU.`;
+            window.demoMult();            
         }
     }
 });
