@@ -11,6 +11,68 @@ Vue.component("andy-qiuqiudajiale", {
     `
 });
 
+function getUnmaskedInfo(gl) {
+    var unMaskedInfo = {
+        renderer: '',
+        vendor: ''
+    };
+
+    var dbgRenderInfo = gl.getExtension("WEBGL_debug_renderer_info");
+    if (dbgRenderInfo != null) {
+        unMaskedInfo.renderer = gl.getParameter(dbgRenderInfo.UNMASKED_RENDERER_WEBGL);
+        unMaskedInfo.vendor   = gl.getParameter(dbgRenderInfo.UNMASKED_VENDOR_WEBGL);
+    }
+
+    return unMaskedInfo;
+}
+
+Vue.component("andy-yourdeviceinfo", {
+    template: `
+        <div class="andy-yourdeviceinfo">        
+            <div class="andy-yourdeviceinfo-item" v-for="item in items">
+                <span class="andy-yourdeviceinfo-item__key">{{item.key}}</span>:<span class="andy-yourdeviceinfo-item__value">{{item.value}}</span>
+            </div>
+        </div>     
+    `,
+    data: function () {
+        var gl = document.getElementById("glcanvas").getContext("experimental-webgl");        
+        this.items  = [
+             {
+                key: "appVersion",
+                value: navigator.appVersion
+             },
+             {
+                key: "浏览器供应商",
+                value: navigator.vendor
+             },
+             {
+                 key: "平台",
+                 value: navigator.platform
+             },
+             {
+                 key: "硬件内核数",
+                 value: navigator.hardwareConcurrency
+             },
+             {
+                 key: "GPU支持 render",
+                 value: gl.getParameter(gl.RENDERER)
+             },
+             {
+                 key: "GPU支持 vendor",
+                 value: gl.getParameter(gl.VENDOR)
+             },
+             {
+                 key: "显卡支持",
+                 value: getUnmaskedInfo(gl).vendor
+             },
+             {
+                 key: "显卡型号",
+                 value: getUnmaskedInfo(gl).renderer
+             }                                                                                     
+        ];
+    }
+});
+
 Vue.use(VueMarkdown);
 
 window.globalEle = {};
@@ -42,10 +104,7 @@ var app = new Vue({
       }
   },
     mounted: function() {
-        var self = this;
-loadCSS("http://139.196.32.227:8080/test.css", function(link) {
-    console.dir(link);
-});        
+        var self = this;       
         setInterval(function () {
             self.global.now = new Date().toLocaleTimeString();
         }, 1000);

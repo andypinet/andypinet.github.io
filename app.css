@@ -8,6 +8,20 @@
     max-width: 240px;
 }
 
+.andy-yourdeviceinfo {
+    box-sizing: border-box;    
+    border: 1px solid #ccc;
+    padding: 15px;
+}
+
+.andy-yourdeviceinfo-item {
+    margin-bottom: 10px;
+}
+
+.andy-yourdeviceinfo-item__value {
+    display: block;
+}
+
 @media screen and (min-width: 481px) {
     .andy-qiuqiudajiale img:nth-child(2) {
         margin-left: 30px;
