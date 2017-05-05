@@ -116,6 +116,75 @@ Vue.component("andy-testyourgpu", {
         <div class="andy-testyourgpu" >            
             <div v-if="cansee">
                 <h3>测试gpu</h3> 
+                <p>主要测试512x512矩阵运算</p>
+                <pre class="code">
+var gpu = new GPU();
+
+function splitArray(array, part) {
+    var tmp = [];
+    for(var i = 0; i < array.length; i += part) {
+        tmp.push(array.slice(i, i + part));
+    }
+    return tmp;
+}
+
+//
+// Startup code
+//
+var mat_size = 512;
+var A = [];
+var B = [];
+for(var n = 0; n < mat_size*mat_size; n++) {
+    var randA = Math.random();
+    var randB = Math.random();
+    A.push(randA);
+    B.push(randB);
+}
+A = splitArray(A, mat_size);
+B = splitArray(B, mat_size);
+
+function createMult(mode) {
+    var opt = {
+        dimensions: [mat_size, mat_size],
+        mode: mode
+    };
+
+    return gpu.createKernel(function(A, B) {
+        var sum = 0;
+        for (var i=0; i<512; i++) {
+            sum += A[this.thread.y][i] * B[i][this.thread.x];
+        }
+        return sum;
+    }, opt);
+}
+
+var mult = {
+    cpu: createMult('cpu'),
+    gpu: createMult('gpu')
+};
+
+var benchmarkOpt = {};
+
+var suite = new Benchmark.Suite;
+
+suite.add('mat_mult_cpu', function() {
+    var mode = 'cpu';
+    var mat_mult = mult[mode];
+
+    var C = mat_mult(A, B);
+    
+    return C;
+}, benchmarkOpt);
+
+suite.add('mat_mult_gpu', function() {
+    var mode = 'gpu';
+    var mat_mult = mult[mode];
+
+    var C = mat_mult(A, B);
+    
+    return C;
+}, benchmarkOpt);                
+                </pre>
                 <div ref="result" v-html="result"></div>                    
                 <button :disabled="disabled" @click="start">start</button>            
             </div>
