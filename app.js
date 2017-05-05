@@ -73,8 +73,6 @@ Vue.component("andy-yourdeviceinfo", {
     }
 });
 
-Vue.use(VueMarkdown);
-
 window.globalEle = {};
 window.globalEle.link = {};
 
