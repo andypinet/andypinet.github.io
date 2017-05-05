@@ -14,15 +14,18 @@
 <body>
     <template id="apptemplate">
         <main>  
-            <andy-yourdeviceinfo></andy-yourdeviceinfo>            
-            <andy-qiuqiudajiale></andy-qiuqiudajiale>  
+            <andy-yourdeviceinfo></andy-yourdeviceinfo>
+            <andy-testyourgpu></andy-testyourgpu>            
+            <andy-qiuqiudajiale></andy-qiuqiudajiale>                  
         </main>        
     </template>        
     <div id="app">              
     </div>     
     <canvas id="glcanvas" width="0" height="0"></canvas>      
     <script src="https://cdn.bootcss.com/es6-promise/4.1.0/es6-promise.min.js"></script>    
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.4/lodash.min.js"></script>
     <script src="https://cdn.bootcss.com/ClientJS/0.1.11/client.min.js"></script>         
+    <script src="https://cdn.bootcss.com/benchmark/2.1.4/benchmark.min.js"></script>
     <script src="./app.js?v=2017050503"></script>
     <script>
         if (window.location.protocol.indexOf("https") > -1 && 'serviceWorker' in navigator) {
