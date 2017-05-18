@@ -4,8 +4,8 @@ Vue.component("andy-qiuqiudajiale", {
             <h3>Donate</h3>
             <p>If my work is helpful to you, please support me a cup of coffee. THX.</p>    
             <div class="layout horizontal center">
-                <img src="https://www.zhilizhili.com/zhifubao.jpg" alt="">
-                <img src="https://www.zhilizhili.com/weixin.png" alt="">
+                <img src="https://cdn.zhilizhili.com/zhifubao.jpg" alt="">
+                <img src="https://cdn.zhilizhili.com/weixin.png" alt="">
             </div>        
         </div>
     `
