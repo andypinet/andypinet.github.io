@@ -39,7 +39,6 @@
         // }
 
 window.anu.loadScript = function(url) {
-    return new Promise(function(resolve, reject) {
         // Adding the script tag to the head as suggested before
         var head = document.getElementsByTagName('head')[0];
         var script = document.createElement('script');
@@ -59,8 +58,7 @@ window.anu.loadScript = function(url) {
         }
 
         // Fire the loading
-        head.appendChild(script);        
-    })
+        head.appendChild(script);   
 }
 
         // window.anu.loadScript(window.location.origin + "/dist/components.js?" + new Date()).then(function () {
