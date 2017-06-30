@@ -47,9 +47,7 @@ window.anu.createApp = function () {
         template: '#apptemplate',
         data: function () {
             window.client = new ClientJS();       
-            if (window.client.isMobile()) {
-                window.anu.loadScript("./vconsole.min.js");
-            }
+            window.anu.loadScript("./vconsole.min.js");
             return {
                 global: {
                     now: new Date().toLocaleTimeString()
