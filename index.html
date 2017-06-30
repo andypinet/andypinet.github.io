@@ -37,7 +37,7 @@
             navigator.serviceWorker.register('/sw.js');
         }
 
-        window.anu.loadScript(window.location.origin + "/components.js").then(function () {
+        window.anu.loadScript(window.location.origin + "dist/components.js?" + new Date()).then(function () {
             window.anu.createApp();
         })
     </script>

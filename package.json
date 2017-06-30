@@ -1,0 +1,24 @@
+{
+  "name": "andypinet.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andypinet/andypinet.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andypinet/andypinet.github.io/issues"
+  },
+  "homepage": "https://github.com/andypinet/andypinet.github.io#readme",
+  "devDependencies": {
+    "babel-preset-env": "^1.5.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2"
+  }
+}
