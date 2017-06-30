@@ -49,13 +49,11 @@ window.anu.loadScript = function(url) {
         // Then bind the event to the callback function.
         // There are several events for cross browser compatibility.
         script.onreadystatechange = function() {
-            resolve();
         };        
         script.onload = function() {
-            resolve();
         };
         script.onerror = function(e) {
-            reject(e);
+            alert("error");
         }
 
         // Fire the loading
